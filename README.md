@@ -2,6 +2,14 @@
 
 Export and import [Microsoft Fabric](https://learn.microsoft.com/fabric/) **Ontology** definitions across workspaces and tenants using the Fabric REST API.
 
+## Purpose
+
+This repo is designed to **export an existing ontology and create a new ontology based on it**. It helps you:
+
+- **Share ontologies** with other users — export from one workspace/tenant and import into another
+- **Create a copy** of an existing ontology and make changes, instead of building from scratch
+- **Work with your own data** — unlike other repos that create ontologies from sample datasets, this solution lets you use your own data to build and share ontologies
+
 ## Overview
 
 | Notebook | Purpose |
@@ -73,44 +81,23 @@ When you configure **multiple** target items of the same type (e.g., two lakehou
 ## Repository Structure
 
 ```
-├── export_ontology.ipynb          # Fabric notebook — export workflow
-├── import_ontology.ipynb          # Fabric notebook — import workflow
-├── build_wheels.ps1               # Build .whl files for both packages
-├── packages/
-│   ├── fabric_ontology_export/    # Export Python package
-│   │   ├── pyproject.toml
-│   │   └── fabric_ontology_export/
-│   │       ├── __init__.py
-│   │       ├── _core.py           # export_ontology() + source-item map builder
-│   │       └── _helpers.py        # ABFS-aware file I/O, HTTP, LRO polling
-│   └── fabric_ontology_import/    # Import Python package
-│       ├── pyproject.toml
-│       └── fabric_ontology_import/
-│           ├── __init__.py
-│           ├── _core.py           # import_ontology() + binding rewrite logic
-│           └── _helpers.py        # ABFS-aware file I/O, HTTP, LRO polling
-└── dist/                          # Built .whl files (after running build_wheels.ps1)
+├── README.md
+├── export_ontology.ipynb                          # Fabric notebook — export workflow
+├── import_ontology.ipynb                          # Fabric notebook — import workflow
+└── dist/
+    ├── fabric_ontology_export-1.0.0-py3-none-any.whl   # Pre-built export package
+    └── fabric_ontology_import-1.0.0-py3-none-any.whl   # Pre-built import package
 ```
 
 ---
 
 ## Quick Start
 
-### 1. Build the wheel files
+### 1. Upload wheel files to your Fabric lakehouse
 
-```powershell
-.\build_wheels.ps1
-```
+Download both `.whl` files from the `dist/` folder and upload them to a `Files` folder in your lakehouse (e.g., `Files/FabricIQ-export_import_package/`).
 
-This produces two files in `dist/`:
-- `fabric_ontology_export-1.0.0-py3-none-any.whl`
-- `fabric_ontology_import-1.0.0-py3-none-any.whl`
-
-### 2. Upload to your Fabric lakehouse
-
-Upload the `.whl` files to a `Files` folder in your lakehouse (e.g., `Files/FabricIQ-export_import_package/`).
-
-### 3. Export an ontology
+### 2. Export an ontology
 
 1. Open `export_ontology.ipynb` in a Fabric notebook
 2. Install the export wheel:
@@ -124,7 +111,7 @@ Upload the `.whl` files to a `Files` folder in your lakehouse (e.g., `Files/Fabr
 - `<OUTPUT_PATH>/<ONTOLOGY_NAME>_definition.json` — feed this to the import notebook
 - `<OUTPUT_PATH>/<ONTOLOGY_NAME>_decoded/` — human-readable decoded parts (for reference)
 
-### 4. Import into a target workspace
+### 3. Import into a target workspace
 
 1. Copy `*_definition.json` to the target lakehouse `Files` folder
 2. Open `import_ontology.ipynb` in a Fabric notebook

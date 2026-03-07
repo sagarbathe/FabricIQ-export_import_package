@@ -5,8 +5,11 @@ __pycache__/
 *.egg-info/
 *.egg
 build/
-dist/
-*.whl
+
+# Package source & build script (only wheels are distributed)
+packages/
+build_wheels.ps1
+export_ontology_ori.ipynb
 
 # Virtual environments
 .venv/
