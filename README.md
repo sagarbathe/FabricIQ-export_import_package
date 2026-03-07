@@ -34,7 +34,7 @@ Source Workspace                          Target Workspace
 ```
 
 1. **Export** calls `getDefinition` on the source ontology, embeds a **source-item map** (display names of every referenced data-source item), and writes `<name>_definition.json` plus a human-readable `<name>_decoded/` folder.
-2. **Import** reads the definition JSON, rewrites binding payloads to point at the configured target items (lakehouses, warehouses, eventhouses, semantic models), and creates the ontology via the Fabric API. Bindings that cannot be rewritten are **dropped** and clearly reported as unbound.
+2. **Import** reads the definition JSON, rewrites binding payloads to point at the configured target items (lakehouses, warehouses, eventhouses), and creates the ontology via the Fabric API. Bindings that cannot be rewritten are **dropped** and clearly reported as unbound.
 
 > **Cross-tenant support:** The source-item map is embedded at export time, so the import notebook **does not need access to the source workspace or tenant**.
 
@@ -49,7 +49,6 @@ The import rewrites `workspaceId` and `itemId` in each binding, but **`sourceTab
 - **Lakehouse delta tables** in the target lakehouse must exist with the **exact same names** as in the source lakehouse.
 - **Warehouse tables** in the target warehouse must match by name.
 - **KQL tables** in the target eventhouse / KQL database must match by name.
-- **Semantic model tables** must match by name.
 
 > **If a table does not exist** in the target item with the expected name, the binding will fail at runtime even though the ontology is created successfully.
 
@@ -62,7 +61,6 @@ Before running the import notebook, ensure the target Fabric items exist in the 
 | `LakehouseTable` | Lakehouse (with matching delta tables) | `TARGET_LAKEHOUSE_NAMES` |
 | `WarehouseTable` | Warehouse (with matching tables) | `TARGET_WAREHOUSE_NAMES` |
 | `KustoTable` | Eventhouse (with matching KQL tables) | `TARGET_EVENTHOUSE_NAMES` |
-| `SemanticModelTable` | Semantic Model (with matching tables) | `TARGET_SEMANTIC_MODEL_NAMES` |
 
 ### 3. Unbound bindings are dropped, not silently kept
 
@@ -123,7 +121,7 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
    - `DEFINITION_PATH` — path to the exported JSON
    - `TARGET_WORKSPACE_ID` — target workspace GUID
    - `NEW_ONTOLOGY_NAME` — display name for the new ontology
-   - `TARGET_LAKEHOUSE_NAMES`, `TARGET_WAREHOUSE_NAMES`, `TARGET_EVENTHOUSE_NAMES`, `TARGET_SEMANTIC_MODEL_NAMES` — target item names for binding rewrite
+   - `TARGET_LAKEHOUSE_NAMES`, `TARGET_WAREHOUSE_NAMES`, `TARGET_EVENTHOUSE_NAMES` — target item names for binding rewrite
 5. Run all cells
 
 ---
@@ -150,7 +148,6 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
 | `TARGET_LAKEHOUSE_NAMES` | List of lakehouse names for binding rewrite |
 | `TARGET_WAREHOUSE_NAMES` | List of warehouse names for binding rewrite |
 | `TARGET_EVENTHOUSE_NAMES` | List of eventhouse names for binding rewrite |
-| `TARGET_SEMANTIC_MODEL_NAMES` | List of semantic model names for binding rewrite |
 | `OVERWRITE_IF_EXISTS` | Delete existing ontology with same name before creating |
 | `SKIP_BINDING_VALIDATION` | Skip pre-check that target items/tables exist |
 
@@ -174,7 +171,6 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
 | Lakehouse | `LakehouseTable` | ✅ `workspaceId` + `itemId` | ✅ Delta table names must match |
 | Warehouse | `WarehouseTable` | ✅ `workspaceId` + `itemId` | ✅ Table names must match |
 | Eventhouse / KQL DB | `KustoTable` | ✅ `workspaceId` + `itemId` + `clusterUri` | ✅ KQL table names must match |
-| Semantic Model | `SemanticModelTable` | ✅ `workspaceId` + `itemId` | ✅ Table names must match |
 
 ---
 
