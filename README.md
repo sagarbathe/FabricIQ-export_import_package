@@ -40,7 +40,7 @@ Source Workspace                          Target Workspace
 
 ---
 
-## ⚠️ Critical Prerequisites & Dependencies
+## ⚠️ Prerequisites & Dependencies
 
 ### 1. Target tables must have the **same names** as source tables
 
