@@ -9,6 +9,8 @@ This repo is designed to **export an existing ontology and create a new ontology
 - **Share ontologies** with other users — export from one workspace/tenant and import into another
 - **Create a copy** of an existing ontology and make changes, instead of building from scratch
 - **Work with your own data** — unlike other repos that create ontologies from sample datasets, this solution lets you use your own data to build and share ontologies
+- **Sample ontology and tables/data** - Scripts to create tables and load sample data have been provided. A sample ontology built on these tables is provided so that
+  users can start using this ontology right away and create data agents on top of it 
 
 ## Overview
 
