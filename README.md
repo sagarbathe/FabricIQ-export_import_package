@@ -82,10 +82,63 @@ When you configure **multiple** target items of the same type (e.g., two lakehou
 ├── README.md
 ├── export_ontology.ipynb                          # Fabric notebook — export workflow
 ├── import_ontology.ipynb                          # Fabric notebook — import workflow
-└── dist/
-    ├── fabric_ontology_export-1.0.0-py3-none-any.whl   # Pre-built export package
-    └── fabric_ontology_import-1.0.0-py3-none-any.whl   # Pre-built import package
+├── dist/
+│   ├── fabric_ontology_export-1.0.0-py3-none-any.whl   # Pre-built export package
+│   └── fabric_ontology_import-1.0.0-py3-none-any.whl   # Pre-built import package
+└── sample/                                        # AutoClaims sample ontology
+    ├── create auto claim tables.ipynb             # Creates delta tables in a lakehouse
+    ├── load auto claim tables.ipynb               # Loads tables from CSV files
+    ├── ont_AutoClaims_new_definition.json         # Exported ontology definition (ready to import)
+    └── csv/                                       # Sample data files
+        ├── accident.csv
+        ├── adjuster.csv
+        ├── claim.csv
+        ├── driver_telemetry_data.csv
+        ├── policy.csv
+        ├── policyholder.csv
+        └── vehicle.csv
 ```
+
+---
+
+## Sample: AutoClaims Ontology
+
+The `sample/` folder contains a complete, end-to-end example you can use to get started quickly. It provides an **Auto Insurance Claims** ontology with 7 tables and a pre-exported ontology definition file.
+
+### Sample Tables
+
+| Table | Description | Rows |
+|---|---|---|
+| `Policyholder` | Insured individuals | 50 |
+| `Vehicle` | Vehicles on policies | 150 |
+| `Policy` | Insurance policies | 200 |
+| `Adjuster` | Claims adjusters | 10 |
+| `Accident` | Reported accidents | 300 |
+| `Claim` | Insurance claims | 350 |
+| `Driver_Telemetry_Data` | Trip-level driving telemetry (speed, braking, risk scores) | 2,000+ |
+
+### How to use the sample
+
+1. **Create a lakehouse** in your target workspace (e.g., `lh_AutoClaims`)
+
+2. **Upload CSV files** — copy all files from `sample/csv/` to `Files/AutoClaims_csv/` in your lakehouse
+
+3. **Create tables** — open `sample/create auto claim tables.ipynb` in Fabric, attach the lakehouse, and run all cells
+
+4. **Load data** — open `sample/load auto claim tables.ipynb` in Fabric, attach the same lakehouse, and run all cells
+
+5. **Import the ontology** — open `import_ontology.ipynb` and configure:
+   ```python
+   DEFINITION_PATH = "abfss://<workspace>@onelake.dfs.fabric.microsoft.com/<lakehouse>.Lakehouse/Files/ont_AutoClaims_new_definition.json"
+   TARGET_WORKSPACE_ID = "<your-workspace-id>"
+   NEW_ONTOLOGY_NAME = "ont_AutoClaims"
+   TARGET_LAKEHOUSE_NAMES = ["lh_AutoClaims"]
+   TARGET_WAREHOUSE_NAMES = []
+   TARGET_EVENTHOUSE_NAMES = []
+   ```
+   Copy `sample/ont_AutoClaims_new_definition.json` to your lakehouse `Files` folder, then run the import notebook.
+
+> **Tip:** You can also use the export notebook to export this sample ontology and explore the definition structure.
 
 ---
 

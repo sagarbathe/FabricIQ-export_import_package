@@ -1,0 +1,101 @@
+accident_id,policyholder_id,vehicle_vin,accident_date,location,accident_type,severity
+1,1,1HGBH41JXMN109186,2016-02-15,Dallas,Rear-end collision,Medium
+2,1,2HGBH41JXMN109187,2017-03-10,Houston,Side impact,Low
+3,1,1HGBH41JXMN109186,2018-04-05,Austin,Single vehicle,High
+4,1,2HGBH41JXMN109187,2019-05-20,San Antonio,Rear-end collision,Medium
+5,1,1HGBH41JXMN109186,2020-06-12,Dallas,Side impact,Low
+6,1,2HGBH41JXMN109187,2021-07-18,Houston,Single vehicle,High
+7,1,1HGBH41JXMN109186,2022-08-23,Austin,Rear-end collision,Medium
+8,1,2HGBH41JXMN109187,2023-09-30,San Antonio,Side impact,Low
+9,1,1HGBH41JXMN109186,2024-10-15,Dallas,Single vehicle,High
+10,1,2HGBH41JXMN109187,2025-11-05,Houston,Rear-end collision,Medium
+11,2,3HGBH41JXMN109188,2016-02-20,Austin,Side impact,Low
+12,2,4HGBH41JXMN109189,2017-03-15,San Antonio,Single vehicle,High
+13,2,3HGBH41JXMN109188,2018-04-10,Dallas,Rear-end collision,Medium
+14,2,4HGBH41JXMN109189,2019-05-25,Houston,Side impact,Low
+15,2,3HGBH41JXMN109188,2020-06-17,Austin,Single vehicle,High
+16,2,4HGBH41JXMN109189,2021-07-23,San Antonio,Rear-end collision,Medium
+17,2,3HGBH41JXMN109188,2022-08-28,Dallas,Side impact,Low
+18,2,4HGBH41JXMN109189,2023-10-03,Houston,Single vehicle,High
+19,2,3HGBH41JXMN109188,2024-10-20,Austin,Rear-end collision,Medium
+20,2,4HGBH41JXMN109189,2025-11-10,San Antonio,Side impact,Low
+21,3,5HGBH41JXMN109190,2016-02-25,Dallas,Single vehicle,High
+22,3,6HGBH41JXMN109191,2017-03-20,Houston,Rear-end collision,Medium
+23,3,5HGBH41JXMN109190,2018-04-15,Austin,Side impact,Low
+24,3,6HGBH41JXMN109191,2019-05-30,San Antonio,Single vehicle,High
+25,3,5HGBH41JXMN109190,2020-06-22,Dallas,Rear-end collision,Medium
+26,3,6HGBH41JXMN109191,2021-07-28,Houston,Side impact,Low
+27,3,5HGBH41JXMN109190,2022-09-02,Austin,Single vehicle,High
+28,3,6HGBH41JXMN109191,2023-10-08,San Antonio,Rear-end collision,Medium
+29,3,5HGBH41JXMN109190,2024-10-25,Dallas,Side impact,Low
+30,3,6HGBH41JXMN109191,2025-11-15,Houston,Single vehicle,High
+31,4,7HGBH41JXMN109192,2016-03-02,Austin,Rear-end collision,Medium
+32,4,8HGBH41JXMN109193,2017-03-25,San Antonio,Side impact,Low
+33,4,7HGBH41JXMN109192,2018-04-20,Dallas,Single vehicle,High
+34,4,8HGBH41JXMN109193,2019-06-05,Houston,Rear-end collision,Medium
+35,4,7HGBH41JXMN109192,2020-06-27,Austin,Side impact,Low
+36,4,8HGBH41JXMN109193,2021-08-02,San Antonio,Single vehicle,High
+37,4,7HGBH41JXMN109192,2022-09-07,Dallas,Rear-end collision,Medium
+38,4,8HGBH41JXMN109193,2023-10-12,Houston,Side impact,Low
+39,4,7HGBH41JXMN109192,2024-10-30,Austin,Single vehicle,High
+40,4,8HGBH41JXMN109193,2025-11-20,San Antonio,Rear-end collision,Medium
+41,5,9HGBH41JXMN109194,2016-03-07,Dallas,Side impact,Low
+42,5,10HGBH41JXMN109195,2017-03-30,Houston,Single vehicle,High
+43,5,9HGBH41JXMN109194,2018-04-25,Austin,Rear-end collision,Medium
+44,5,10HGBH41JXMN109195,2019-06-10,San Antonio,Side impact,Low
+45,5,9HGBH41JXMN109194,2020-07-02,Dallas,Single vehicle,High
+46,5,10HGBH41JXMN109195,2021-08-07,Houston,Rear-end collision,Medium
+47,5,9HGBH41JXMN109194,2022-09-12,Austin,Side impact,Low
+48,5,10HGBH41JXMN109195,2023-10-17,San Antonio,Single vehicle,High
+49,5,9HGBH41JXMN109194,2024-11-05,Dallas,Rear-end collision,Medium
+50,5,10HGBH41JXMN109195,2025-11-25,Houston,Side impact,Low
+51,31,61HGBH41JXMN109246,2017-05-10,Houston,Rear-end collision,Medium
+52,31,62HGBH41JXMN109247,2022-08-15,Dallas,Single vehicle,High
+53,32,63HGBH41JXMN109248,2018-06-20,Austin,Side impact,Low
+54,33,65HGBH41JXMN109250,2020-09-12,San Antonio,Rear-end collision,Medium
+55,34,67HGBH41JXMN109252,2021-11-05,Houston,Single vehicle,High
+56,35,69HGBH41JXMN109254,2019-03-18,Dallas,Rear-end collision,Medium
+57,36,71HGBH41JXMN109256,2023-07-22,Austin,Side impact,Low
+58,37,73HGBH41JXMN109258,2024-10-30,San Antonio,Single vehicle,High
+59,38,75HGBH41JXMN109260,2016-12-01,Houston,Rear-end collision,Medium
+60,39,77HGBH41JXMN109262,2025-05-15,Dallas,Single vehicle,High
+61,40,79HGBH41JXMN109264,2018-08-10,Austin,Side impact,Low
+62,41,81HGBH41JXMN109266,2020-10-05,San Antonio,Rear-end collision,Medium
+63,42,83HGBH41JXMN109268,2021-12-18,Houston,Single vehicle,High
+64,43,85HGBH41JXMN109270,2019-04-22,Dallas,Rear-end collision,Medium
+65,44,87HGBH41JXMN109272,2023-09-30,Austin,Side impact,Low
+66,45,89HGBH41JXMN109274,2024-11-10,San Antonio,Single vehicle,High
+67,46,91HGBH41JXMN109276,2017-07-15,Houston,Rear-end collision,Medium
+68,47,93HGBH41JXMN109278,2022-10-20,Dallas,Single vehicle,High
+69,48,95HGBH41JXMN109280,2018-09-25,Austin,Side impact,Low
+70,49,97HGBH41JXMN109282,2020-11-12,San Antonio,Rear-end collision,Medium
+71,50,99HGBH41JXMN109284,2021-12-30,Houston,Single vehicle,High
+72,51,101HGBH41JXMN109286,2019-05-18,Dallas,Rear-end collision,Medium
+73,52,103HGBH41JXMN109288,2023-08-25,Austin,Side impact,Low
+74,53,105HGBH41JXMN109290,2024-10-05,San Antonio,Single vehicle,High
+75,54,107HGBH41JXMN109292,2017-06-10,Houston,Rear-end collision,Medium
+76,55,109HGBH41JXMN109294,2022-09-15,Dallas,Single vehicle,High
+77,56,111HGBH41JXMN109296,2018-07-20,Austin,Side impact,Low
+78,57,113HGBH41JXMN109298,2020-12-05,San Antonio,Rear-end collision,Medium
+79,58,115HGBH41JXMN109300,2021-12-25,Houston,Single vehicle,High
+80,59,117HGBH41JXMN109302,2019-06-30,Dallas,Rear-end collision,Medium
+81,60,119HGBH41JXMN109304,2023-08-10,Austin,Side impact,Low
+82,61,121HGBH41JXMN109306,2024-11-20,San Antonio,Single vehicle,High
+83,62,123HGBH41JXMN109308,2017-08-15,Houston,Rear-end collision,Medium
+84,63,125HGBH41JXMN109310,2022-11-20,Dallas,Single vehicle,High
+85,64,127HGBH41JXMN109312,2018-10-25,Austin,Side impact,Low
+86,65,129HGBH41JXMN109314,2020-12-12,San Antonio,Rear-end collision,Medium
+87,66,131HGBH41JXMN109316,2021-12-30,Houston,Single vehicle,High
+88,67,133HGBH41JXMN109318,2019-07-18,Dallas,Rear-end collision,Medium
+89,68,135HGBH41JXMN109320,2023-09-05,Austin,Side impact,Low
+90,69,137HGBH41JXMN109322,2024-11-25,San Antonio,Single vehicle,High
+91,70,139HGBH41JXMN109324,2017-09-10,Houston,Rear-end collision,Medium
+92,71,141HGBH41JXMN109326,2022-12-20,Dallas,Single vehicle,High
+93,72,143HGBH41JXMN109328,2018-11-25,Austin,Side impact,Low
+94,73,145HGBH41JXMN109330,2020-12-22,San Antonio,Rear-end collision,Medium
+95,74,147HGBH41JXMN109332,2021-12-30,Houston,Single vehicle,High
+96,75,149HGBH41JXMN109334,2019-08-18,Dallas,Rear-end collision,Medium
+97,76,151HGBH41JXMN109336,2023-09-15,Austin,Side impact,Low
+98,77,153HGBH41JXMN109338,2024-10-15,San Antonio,Single vehicle,High
+99,78,155HGBH41JXMN109340,2017-10-10,Houston,Rear-end collision,Medium
+100,79,157HGBH41JXMN109342,2022-12-30,Dallas,Single vehicle,High
