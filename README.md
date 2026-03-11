@@ -132,20 +132,26 @@ The `sample/` folder contains a complete, end-to-end example you can use to get 
 
 ### How to use the sample
 
-1. **Create a lakehouse** in your target workspace (e.g., `lh_AutoClaims`)
+1. **Create a lakehouse** in your target workspace (e.g., `lh_AutoClaims`). (The exported ontology is based on a schema-enabled lakehouse. Please ensure your lakehouse is schema-enabled)
 
 2. **Upload CSV files** — copy all files from `sample/csv/` to `Files/AutoClaims_csv/` in your lakehouse
 
-3. **Create tables** — open `sample/create auto claim tables.ipynb` in Fabric, attach the lakehouse, and run all cells
+3. **Create tables** — open `sample/create auto claim tables.ipynb` in Fabric, attach the lakehouse, and run all cells (If the notebook points to a default lakehouse different than your lakehouse, please remove and attach your lakehouse)
 
-4. **Load data** — open `sample/load auto claim tables.ipynb` in Fabric, attach the same lakehouse, and run all cells
+4. **Load data** — open `sample/load auto claim tables.ipynb` in Fabric, attach the same lakehouse, and run all cells (If the notebook points to a default lakehouse different than your lakehouse, please remove and attach your lakehouse)
 
-5. **Import the ontology** — open `import_ontology.ipynb` and configure:
+5. **Import the ontology** — open `import_ontology.ipynb` and configure (If the notebook points to a default lakehouse different than your lakehouse, please remove and attach your lakehouse):
    ```python
-   DEFINITION_PATH = "abfss://<workspace>@onelake.dfs.fabric.microsoft.com/<lakehouse>.Lakehouse/Files/ont_AutoClaims_new_definition.json"
+
+       # ── Where to find the exported definition ────────────────────
+    WORKSPACE_NAME      = "<Workspace_name>"
+    LAKEHOUSE_NAME      = "<Lakehouse_name>"
+    EXPORT_FOLDER       = "<Export_folder_name>"
+    SOURCE_ONTOLOGY     = "<Source_ontology_name>"
+
    TARGET_WORKSPACE_ID = "<your-workspace-id>"
    NEW_ONTOLOGY_NAME = "ont_AutoClaims"
-   TARGET_LAKEHOUSE_NAMES = ["lh_AutoClaims"]
+   TARGET_LAKEHOUSE_NAMES = ["<Lakehouse_name>"]
    TARGET_WAREHOUSE_NAMES = []
    TARGET_EVENTHOUSE_NAMES = []
    ```
