@@ -54,7 +54,18 @@ The import rewrites `workspaceId` and `itemId` in each binding, but **`sourceTab
 
 > **If a table does not exist** in the target item with the expected name, the binding will fail at runtime even though the ontology is created successfully.
 
-### 2. Target items must be pre-created
+### 2. Lakehouse schema setting must match between source and target
+
+Fabric Lakehouses can be **schema-enabled** (tables live under a schema like `dbo`) or **non-schema** (flat table namespace). The ontology binding stores this as `sourceSchema`.
+
+| Source Lakehouse | Target Lakehouse must be | What happens if mismatched |
+|---|---|---|
+| **Schema-enabled** (e.g. `dbo`) | **Schema-enabled** with the same schema name(s) | Ontology bindings look for `dbo/tablename` — if the target has no schema, the table is not found |
+| **Non-schema** (no `sourceSchema`) | **Non-schema** | Ontology bindings look for just `tablename` — if the target has schemas, the table is not found |
+
+> The import notebook will print a **`SCHEMA NOTICE`** at runtime telling you whether the source used schemas or not, so you can verify your target matches before the ontology is created.
+
+### 3. Target items must be pre-created
 
 Before running the import notebook, ensure the target Fabric items exist in the target workspace:
 
@@ -64,7 +75,7 @@ Before running the import notebook, ensure the target Fabric items exist in the 
 | `WarehouseTable` | Warehouse (with matching tables) | `TARGET_WAREHOUSE_NAMES` |
 | `KustoTable` | Eventhouse (with matching KQL tables) | `TARGET_EVENTHOUSE_NAMES` |
 
-### 3. Unbound bindings are dropped, not silently kept
+### 4. Unbound bindings are dropped, not silently kept
 
 If no target item is configured for a source binding type (e.g., no eventhouse specified but the source ontology has KQL bindings), those bindings are **removed**. The import notebook prints a prominent **`UNBOUND BINDINGS — ACTION REQUIRED`** summary listing every dropped binding with its owner entity, source type, table name, and reason.
 
@@ -72,7 +83,7 @@ You can fix unbound entities by either:
 - Adding the missing target item to the configuration and re-running the import
 - Manually binding them in the Fabric UI after import
 
-### 4. Multi-item mapping requires matching display names
+### 5. Multi-item mapping requires matching display names
 
 When you configure **multiple** target items of the same type (e.g., two lakehouses), the import uses the **source item display name** (from the embedded source-item map) to match each binding to the correct target item. Ensure target item display names match the source names, or use a single target item to map all bindings.
 
@@ -85,8 +96,8 @@ When you configure **multiple** target items of the same type (e.g., two lakehou
 ├── export_ontology.ipynb                          # Fabric notebook — export workflow
 ├── import_ontology.ipynb                          # Fabric notebook — import workflow
 ├── dist/
-│   ├── fabric_ontology_export-1.0.0-py3-none-any.whl   # Pre-built export package
-│   └── fabric_ontology_import-1.0.0-py3-none-any.whl   # Pre-built import package
+│   ├── fabric_ontology_export-1.1.0-py3-none-any.whl   # Pre-built export package
+│   └── fabric_ontology_import-1.1.0-py3-none-any.whl   # Pre-built import package
 └── sample/                                        # AutoClaims sample ontology
     ├── create auto claim tables.ipynb             # Creates delta tables in a lakehouse
     ├── load auto claim tables.ipynb               # Loads tables from CSV files
@@ -155,7 +166,7 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
 1. Open `export_ontology.ipynb` in a Fabric notebook
 2. Install the export wheel:
    ```python
-   %pip install /lakehouse/default/Files/FabricIQ-export_import_package/fabric_ontology_export-1.0.0-py3-none-any.whl
+   %pip install /lakehouse/default/Files/FabricIQ-export_import_package/fabric_ontology_export-1.1.0-py3-none-any.whl
    ```
 3. Set `WORKSPACE_ID`, `ONTOLOGY_ID`, `ONTOLOGY_NAME`, and `OUTPUT_PATH`
 4. Run all cells
@@ -170,7 +181,7 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
 2. Open `import_ontology.ipynb` in a Fabric notebook
 3. Install the import wheel:
    ```python
-   %pip install /lakehouse/default/Files/FabricIQ-export_import_package/fabric_ontology_import-1.0.0-py3-none-any.whl
+   %pip install /lakehouse/default/Files/FabricIQ-export_import_package/fabric_ontology_import-1.1.0-py3-none-any.whl
    ```
 4. Configure:
    - `DEFINITION_PATH` — path to the exported JSON
@@ -236,8 +247,10 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
 | `ModuleNotFoundError: No module named 'fabric_ontology_export'` | Wheel not installed or wrong filename | Run `%pip install` with the correct `.whl` path |
 | `UNBOUND BINDINGS — ACTION REQUIRED` | No target item configured for a source binding type | Add the missing target item name to the configuration |
 | `Binding validation failed` | Target item doesn't exist or is missing tables | Create the target item and ensure tables match source names |
+| `Table not found` in ontology binding screen | Lakehouse schema mismatch between source and target | If source used schema-enabled Lakehouse (`dbo`), target must also be schema-enabled. If source had no schema, target must also have no schema. See the `SCHEMA NOTICE` printed during import. |
 | `notebookutils is required for ABFS paths` | Running outside a Fabric notebook | Use local file paths or run inside a Fabric notebook |
 | `LRO timed out` | Large ontology or slow API response | Increase `timeout` parameter |
+| Version assertion error on import | Old 1.0.0 wheel still installed | Upload and install the new 1.1.0 wheel; the version check ensures the schema fix is active |
 
 ---
 
