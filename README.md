@@ -167,7 +167,7 @@ The `sample/` folder contains a complete, end-to-end example you can use to get 
 
 Download both `.whl` files from the `dist/` folder and upload them to a `Files` folder in your lakehouse (e.g., `Files/FabricIQ-export_import_package/`).
 
-### 2. Export an ontology
+### 2. Export an ontology (Skip this step if using the Sample ontology provided)
 
 1. Open `export_ontology.ipynb` in a Fabric notebook
 2. Install the export wheel:
@@ -181,7 +181,7 @@ Download both `.whl` files from the `dist/` folder and upload them to a `Files` 
 - `<OUTPUT_PATH>/<ONTOLOGY_NAME>_definition.json` — feed this to the import notebook
 - `<OUTPUT_PATH>/<ONTOLOGY_NAME>_decoded/` — human-readable decoded parts (for reference)
 
-### 3. Import into a target workspace
+### 3. Import into a target workspace (For detailed instructions, see the "import_ontology.ipynb" notebook)
 
 1. Copy `*_definition.json` to the target lakehouse `Files` folder
 2. Open `import_ontology.ipynb` in a Fabric notebook
